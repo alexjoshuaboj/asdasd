@@ -3,7 +3,7 @@ const peliculasModel = require("../models/peliculas");
 const getAllMovies = async (req, res) => {
   try {
     const pelicula = await peliculasModel.find();
-    res.json(pelicula, "Peliculas encontrada");
+    res.json(pelicula, "Peliculas encontradas");
   } catch (error) {
     res.json(error);
   }

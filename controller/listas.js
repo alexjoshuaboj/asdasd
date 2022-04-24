@@ -3,7 +3,7 @@ const listasModel = require("../models/listas");
 const getAllListas = async (req, res) => {
   try {
     const lista = await listasModel.find();
-    res.json(lista, "Lista encontrada");
+    res.json(lista, "Lista encontradas");
   } catch (error) {
     res.error(error);
   }
