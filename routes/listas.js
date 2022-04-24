@@ -1,10 +1,12 @@
-const { getLista, postLista } = require('../controller/listas');
-const express = require('express');
+const { getAllListas, getLista, postLista, deleteLista, updateLista } = require("../controller/listas");
+const express = require("express");
 const router = express.Router();
 
-/* GET users listing. */
-router.get('/',getLista);
-router.post('/',postLista);
-
+/* GET lists listing. */
+router.get("/", getAllListas);
+router.get("/:id", getLista);
+router.post("/", postLista);
+router.delete("/:id", deleteLista);
+router.put("/:id", updateLista);
 
 module.exports = router;
