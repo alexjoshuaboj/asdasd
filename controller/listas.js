@@ -5,7 +5,7 @@ const getAllListas = async (req, res) => {
     const lista = await listasModel.find();
     res.json(lista, "Lista encontradas");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -15,7 +15,7 @@ const getLista = async (req, res) => {
     const lista = await listasModel.findById({ _id: id });
     res.json(lista, "Lista encontrada por _id");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -25,7 +25,7 @@ const postLista = async (req, res) => {
     const lista = await listasModel.create({ name, _idUser, _idApi_movie: { type: String, required: true } });
     res.json(lista, "Lista creada");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -35,7 +35,7 @@ const deleteLista = async (req, res) => {
     const lista = await listasModel.findByIdAndDelete({ _id: id });
     res.json(lista, "Lista eliminada");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -45,7 +45,7 @@ const updateLista = async (req, res) => {
     const lista = await listasModel.findByIdAndUpdate(id, { name, _idUser, _idApi_movie: { type: String, required: true } });
     res.json(lista, "Lista actualizada");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 

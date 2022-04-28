@@ -1,27 +1,29 @@
-(async ()=>{
-  await require('./database');
-})()
+(async () => {
+  await require("./database");
+})();
 
-let express = require('express');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
+const express = require("express");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-let moviesRouter = require('./routes/peliculas');
+const moviesRouter = require("./routes/peliculas");
+const usersRouter = require("./routes/users");
+const listaRouter = require("./routes/listas");
 
-let app = express();
+const app = express();
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use("/peliculas", moviesRouter);
+app.use("/usuarios", usersRouter);
+app.use("/listas", listaRouter);
 
-app.use('/movies', moviesRouter);
-
-
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);

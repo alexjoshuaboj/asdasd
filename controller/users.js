@@ -5,7 +5,7 @@ const getAllUsers = async (req, res) => {
     const user = await usersModel.find();
     res.json(user, "Usuarios encontrados");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -15,7 +15,7 @@ const getUser = async (req, res) => {
     const user = await usersModel.findById({ _id: id });
     res.json(user, "Usuario encontrado por _id");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -25,7 +25,7 @@ const postUser = async (req, res) => {
     const user = await usersModel.create({ name, pass, _isAdmin });
     res.json(user, "Usuario creado");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -35,7 +35,7 @@ const deleteUser = async (req, res) => {
     const user = await usersModel.findByIdAndDelete({ _id: id });
     res.json(user, "Usuario eliminado");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
@@ -45,7 +45,7 @@ const updateUser = async (req, res) => {
     const user = await usersModel.findByIdAndUpdae({ _id: id });
     res.json(user, "Usuario actualizado");
   } catch (error) {
-    res.error(error);
+    res.json(error);
   }
 };
 
