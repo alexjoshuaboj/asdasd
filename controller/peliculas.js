@@ -3,7 +3,7 @@ const peliculasModel = require("../models/peliculas");
 const getAllMovies = async (req, res) => {
   try {
     const pelicula = await peliculasModel.find();
-    res.status(200).send((pelicula, "Peliculas encontradas").toString());
+    res.status(200, 'Peliculas encontradas').send(pelicula);
   } catch (error) {
     res.status(error.status || 500).send(error);
   }
@@ -13,8 +13,7 @@ const getMovie = async (req, res) => {
   try {
     const { id } = req.params;
     const pelicula = await peliculasModel.findById({ _id: id });
-    res.status(200).send((pelicula, `Pelicula encontrada por ${_id}`).toString());
-    res.json(pelicula);
+    res.status(200, `Pelicula encontrada por ${_id}`).send((pelicula));
   } catch (error) {
     res.status(error.status || 500).send(error);
   }
@@ -25,7 +24,7 @@ const postMovie = async (req, res) => {
     const { _idApi, meta: { comments: string, favs: number } } = req.body;
     const pelicula = await peliculasModel.create({ _idApi, meta: { comments: string, favs: number } });
     console.log(pelicula);
-    res.status(200).send((pelicula, "Pelicula creada").toString());
+    res.status(200, "Pelicula creada").send((pelicula));
   } catch (error) {
     res.status(error.status || 500).send(error);
   }
@@ -36,7 +35,7 @@ const deleteMovie = async (req, res) => {
     const { id } = req.params;
     const pelicula = await peliculasModel.findByIdAndDelete({ _id: id });
     console.log(pelicula);
-    res.status(200).send((pelicula, "Pelicula eliminada").toString());
+    res.status(200, "Pelicula eliminada").send((pelicula));
   } catch (error) {
     res.status(error.status || 500).send(error);
   }
@@ -50,8 +49,7 @@ const updateMovie = async (req, res) => {
       meta: { comments: string, favs: number }
     } = req.body;
     const pelicula = await peliculasModel.findByIdAndUpdate(id, { _idApi, meta: { comments: string, favs: number } });
-    console.log(pelicula);
-    res.status(200).send((pelicula, "Pelicula actualizada").toString());
+    res.status(200, "Pelicula actualizada").send((pelicula));
   } catch (error) {
     res.status(error.status || 500).send(error);
   }
