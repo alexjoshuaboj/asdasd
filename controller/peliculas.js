@@ -3,7 +3,7 @@ const peliculasModel = require("../models/peliculas");
 const getAllMovies = async (req, res) => {
   try {
     const pelicula = await peliculasModel.find();
-    res.status(200, 'Peliculas encontradas').send(pelicula);
+    res.status(200).send({data: pelicula, statusText: 'Peliculas encontradas'});
   } catch (error) {
     res.status(error.status || 500).send(error);
   }
