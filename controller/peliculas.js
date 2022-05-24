@@ -3,9 +3,9 @@ const peliculasModel = require("../models/peliculas");
 const getAllMovies = async (req, res) => {
   try {
     const pelicula = await peliculasModel.find();
-    res.json(pelicula, "Peliculas encontradas");
+    res.status(200).send((pelicula, "Peliculas encontradas").toString());
   } catch (error) {
-    res.json(error);
+    res.status(error.status || 500).send(error);
   }
 };
 
@@ -13,32 +13,32 @@ const getMovie = async (req, res) => {
   try {
     const { id } = req.params;
     const pelicula = await peliculasModel.findById({ _id: id });
-    res.json(pelicula, "Pelicula encontrada por _id");
+    res.status(200).send((pelicula, `Pelicula encontrada por ${_id}`).toString());
+    res.json(pelicula);
   } catch (error) {
-    res.json(error);
+    res.status(error.status || 500).send(error);
   }
 };
 
 const postMovie = async (req, res) => {
   try {
-    const {
-      _idApi,
-      meta: { comments: string, favs: number },
-    } = req.body;
+    const { _idApi, meta: { comments: string, favs: number } } = req.body;
     const pelicula = await peliculasModel.create({ _idApi, meta: { comments: string, favs: number } });
-    res.json(pelicula, "Pelicula creada");
+    console.log(pelicula);
+    res.status(200).send((pelicula, "Pelicula creada").toString());
   } catch (error) {
-    res.json(error);
+    res.status(error.status || 500).send(error);
   }
 };
 
 const deleteMovie = async (req, res) => {
   try {
     const { id } = req.params;
-    await peliculasModel.findByIdAndDelete({ _id: id });
-    res.json("Pelicula eliminada");
+    const pelicula = await peliculasModel.findByIdAndDelete({ _id: id });
+    console.log(pelicula);
+    res.status(200).send((pelicula, "Pelicula eliminada").toString());
   } catch (error) {
-    res.json(error);
+    res.status(error.status || 500).send(error);
   }
 };
 
@@ -47,12 +47,13 @@ const updateMovie = async (req, res) => {
     const { id } = req.params;
     const {
       _idApi,
-      meta: { comments: string, favs: number },
+      meta: { comments: string, favs: number }
     } = req.body;
-    await peliculasModel.findByIdAndUpdate(id, { _idApi, meta: { comments: string, favs: number } });
-    res.json("Pelicula actualizada");
+    const pelicula = await peliculasModel.findByIdAndUpdate(id, { _idApi, meta: { comments: string, favs: number } });
+    console.log(pelicula);
+    res.status(200).send((pelicula, "Pelicula actualizada").toString());
   } catch (error) {
-    res.json(error);
+    res.status(error.status || 500).send(error);
   }
 };
 

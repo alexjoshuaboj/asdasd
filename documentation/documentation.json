@@ -1,0 +1,32 @@
+{
+    "api": "PELICULAS",
+    "api_version": "0.1V",
+    "api_version_status": "Stable interface",
+    "current_time": "2022-05-13",
+    "status": "Working",
+    "author": "Alex Joshua aka M",
+    "backRoute" : "http://localhost:8000/",
+    "routes": {
+        "peliculas": {
+            "GET": [{"endPoint": "/", "action": "getAllMovies"}, 
+             {"endPoint": "/{id}", "action": "getMovie"}],
+            "POST": {"endPoint": "/", "action": "postMovies"},
+            "DELETE": {"endPoint": "/{id}", "action": "deleteMovie"},
+            "PUT": {"endPoint": "/{id}", "action": "updateMovie"}
+        },
+        "usuarios": {
+            "GET": [{"endPoint": "/", "action": "getAllMovies"}, 
+             {"endPoint": "/{id}", "action": "getMovie"}],
+            "POST": {"endPoint": "/", "action": "postMovies"},
+            "DELETE": {"endPoint": "/{id}", "action": "deleteMovie"},
+            "PUT": {"endPoint": "/{id}", "action": "updateMovie"}
+        },
+        "listas": {
+            "GET": [{"endPoint": "/", "action": "getAllUsers"}, 
+            {"endPoint": "/{id}", "action": "getUser"}],
+            "POST": {"endPoint": "/", "action": "postUser"},
+            "DELETE": {"endPoint": "/{id}", "action": "deleteUser"},
+            "PUT": {"endPoint": "/{id}", "action": "updateUser"}
+        }
+    }
+}
