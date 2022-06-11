@@ -21,8 +21,8 @@ const getMovie = async (req, res) => {
 
 const postMovie = async (req, res) => {
   try {
-    const { _idApi, meta: { comments: string, favs: number } } = req.body;
-    const pelicula = await peliculasModel.create({ _idApi, meta: { comments: string, favs: number } });
+    const { title, overview, poster_path, rating, genres, runtime, notes, user_rating } = req.body;
+    const pelicula = await peliculasModel.create({ title, overview, poster_path, rating, genres, runtime, notes, user_rating });
     console.log(pelicula);
     res.status(200, "Pelicula creada").send((pelicula));
   } catch (error) {
