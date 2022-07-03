@@ -1,12 +1,13 @@
-const { getAllListas, getLista, postLista, deleteLista, updateLista } = require("../controller/listas");
-const express = require("express");
+const { getListaById,getListasByUserId, getListaByIdUserandName, createLista, deleteLista,  addPelicula, deletePelicula } = require('../controllers/listas');
+const express = require('express');
 const router = express.Router();
 
-/* GET lists listing. */
-router.get("/", getAllListas);
-router.get("/:id", getLista);
-router.post("/", postLista);
-router.delete("/:id", deleteLista);
-router.put("/:id", updateLista);
+router.get('/:id', getListaById);
+router.get('/all/:iduser', getListasByUserId);
+router.get('/:iduser/:nombre', getListaByIdUserandName);
+router.post('/', createLista);
+router.delete('/:id', deleteLista);
+router.put('/addPelicula/:id/:idpeli', addPelicula);
+router.put('/deletePelicula/:id/:idpeli', deletePelicula);
 
 module.exports = router;

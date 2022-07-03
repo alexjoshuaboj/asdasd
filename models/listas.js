@@ -1,8 +1,8 @@
 const { mongoose } = require("mongoose")
 
 const listasModel = mongoose.Schema({
-    name: { type: String, required: true },
-    _idUser: { type: String },
+    nombre: { type: String, required: true },
+    _idUsuario: { type: String },
     peliculas: { type: Array },
 })
 
