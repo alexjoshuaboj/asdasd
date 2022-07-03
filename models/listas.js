@@ -1,9 +1,9 @@
 const { mongoose } = require("mongoose")
 
 const listasModel = mongoose.Schema({
-    name: { type: String, required: true },
-    _idUser: { type: String, required: true },
-    _idApi_movie: { type: String, required: true }
+    nombre: { type: String, required: true },
+    _idUsuario: { type: String },
+    peliculas: { type: Array },
 })
 
 module.exports = mongoose.model('listas', listasModel);
